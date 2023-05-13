@@ -1,0 +1,75 @@
+input data 1
+____________
+79oklw
+381jstc
+453usja
+535bdxv
+
+input data 2
+____________
+jstc331
+oklw737
+bdxv211
+usja514
+
+output data 
+____________
+79oklw737
+381jstc331
+453usja514
+535bdxv211
+
+Q. How we like to parse our input data?
+
+rawInput1 = [["381", "jstc"], ["79", "oklw"]]
+rawInput2 = [["jstc", "331"], ["oklw", "737"]]
+
+Q. How we like to arrange data after parsing?
+
+input1 = {
+  "jstc" : "381",
+  "oklw" : "79"
+}
+
+input2 = {
+  "jstc" : "331", 
+  "oklw" : "737"
+}
+
+Q. How can we achieve the above structure?
+--> each entry of rawInput1 = [uncommonPart, commonPart]
+--> each entry of rawInput2 = [commonPart, uncommonPart]
+
+input1.commonPart = uncommonPart
+input2.commonPart = uncommonPart
+
+Q. In what structure would we like to get our output?
+
+output = {
+   "jstc" : "381jstc331", 
+   "oklw" : "79oklw737" 
+}
+
+Q. what will we call parts of each entry?
+
+keys --> commonPart
+values --> uncommonPart
+
+Q. How would we like to generate output data from inputs?
+
+commonParts = Object.keys(input1);
+output[commonPart] = input1[commonPart] + commonPart + input2[commonPart]
+
+Q. How can I interact with dataSet1?
+
+word = 79oklw
+word.secondPart; // oklw
+word.firstPart; // 79
+
+words = ["79oklw", "331jstc"]
+dataSet1 = new input1();
+dataSet1.parseCommonTail(); // {"oklw" : "79"}
+
+words = ["oklw792"]
+dataSet2 = new Polymorphism(words)
+dataSet2.parseCommonHead() // {"oklw" : 792}
